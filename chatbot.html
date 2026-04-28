@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZOMIN ESLT - AI Tutor Chat</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/app.js" defer></script>
+</head>
+<body style="background-color: #f4f4f9;">
+    <header style="background-color: #0056b3; color: white; padding: 1rem; display: flex; justify-content: space-between; align-items: center;">
+        <h1 style="margin: 0;">ZOMIN ESLT</h1>
+        <nav>
+            <a href="student-dashboard.html" style="color: white; text-decoration: none; margin-left: 1rem;">Dashboard</a>
+            <a href="index.html" style="color: white; text-decoration: none; margin-left: 1rem;">Logout</a>
+        </nav>
+    </header>
+    
+    <main style="max-width: 700px; margin: 2rem auto; padding: 0 1rem;">
+        
+        <div style="background: white; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: flex; flex-direction: column; height: 70vh;">
+            
+            <div style="background-color: #007bff; color: white; padding: 1.5rem; border-top-left-radius: 8px; border-top-right-radius: 8px; text-align: center;">
+                <h2 style="margin: 0;">AI Language Tutor</h2>
+                <p style="margin: 0; font-size: 0.9em; opacity: 0.9; margin-top: 0.5rem;">I can correct your sentences, explain grammar, and answer questions!</p>
+            </div>
+
+            <div id="chat-messages" style="flex: 1; padding: 1.5rem; overflow-y: auto; display: flex; flex-direction: column; gap: 1rem; background-color: #fafafa; font-size: 1.05rem;">
+                <!-- Chat messages injected here -->
+                <div style="align-self: flex-start; background: #e2f0ff; padding: 1rem; border-radius: 15px; border-bottom-left-radius: 0; max-width: 80%; line-height: 1.4;">
+                    Hi there! I am your AI Tutor. Try typing a sentence with a mistake, or ask me to explain a grammar rule (like "explain present continuous").
+                </div>
+            </div>
+
+            <div style="padding: 1rem; border-top: 1px solid #ddd; display: flex; gap: 0.5rem; background: white; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;">
+                <input type="text" id="chat-input" placeholder="Type your sentence or question here..." style="flex: 1; padding: 1rem; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem;" onkeypress="handleKeyPress(event)">
+                <button onclick="sendMessage()" style="background-color: #28a745; border-radius: 4px; padding: 0 2rem; font-weight: bold; font-size: 1.1rem;">Send</button>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="js/chatbot.js"></script>
+</body>
+</html>

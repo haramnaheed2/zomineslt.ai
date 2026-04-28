@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZOMIN ESLT - Assessment</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/app.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Assessment Test</h1>
+        <nav>
+            <a href="student-dashboard.html">Dashboard</a>
+            <a href="index.html">Logout</a>
+        </nav>
+    </header>
+    <main style="max-width: 800px; margin: 0 auto; text-align: left;">
+        
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #ccc; padding-bottom: 1rem; margin-bottom: 1rem;">
+            <h2 id="test-title" style="margin: 0;">Loading Test...</h2>
+            <div id="timer-container" style="font-size: 1.25rem; font-weight: bold; padding: 0.5rem 1rem; background: #0056b3; color: white; border-radius: 4px;">
+                Time Left: <span id="timer-display">20:00</span>
+            </div>
+        </div>
+        
+        <p>Complete the test below to demonstrate your proficiency. The test will auto-submit when the timer reaches zero.</p>
+        
+        <!-- Results container -->
+        <div id="result-container" style="display: none; padding: 2rem; background: #fff; border: 1px solid #ddd; border-radius: 4px; text-align: center;"></div>
+
+        <!-- Where questions are injected -->
+        <div id="mcq-container"></div>
+        
+        <button id="btn-submit" style="background-color: #28a745; width: 100%; margin-top: 2rem; font-size: 1.2rem; padding: 1rem;">Submit Test</button>
+
+    </main>
+
+    <script type="module">
+        import { initTest } from './js/test-engine.js';
+        
+        // Wait for DOM
+        document.addEventListener('DOMContentLoaded', () => {
+            initTest();
+        });
+    </script>
+</body>
+</html>

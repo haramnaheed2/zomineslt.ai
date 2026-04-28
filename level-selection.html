@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZOMIN ESLT - Level Selection</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/app.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Level Selection</h1>
+        <nav>
+            <a href="student-dashboard.html">Dashboard</a>
+            <a href="index.html">Logout</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Select Your English Level</h2>
+        <p>Choose a level to start your placement test.</p>
+        <div class="level-buttons">
+            <button onclick="selectLevel('Beginner')">Beginner</button>
+            <button onclick="selectLevel('Intermediate')">Intermediate</button>
+            <button onclick="selectLevel('Advanced')">Advanced</button>
+        </div>
+    </main>
+    <script>
+        // Store selected level locally and proceed to test
+        function selectLevel(level) {
+            localStorage.setItem('selectedLevel', level);
+            window.location.href = 'test.html';
+        }
+    </script>
+</body>
+</html>

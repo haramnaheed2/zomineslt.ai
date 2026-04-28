@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZOMIN ESLT - Student Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/app.js" defer></script>
+</head>
+<body style="background-color: #f4f4f9;">
+    <header style="background-color: #0056b3; color: white; padding: 1rem; display: flex; justify-content: space-between; align-items: center;">
+        <h1 style="margin: 0;">ZOMIN ESLT</h1>
+        <nav>
+            <a href="student-dashboard.html" style="color: white; text-decoration: none; margin-left: 1rem;">Dashboard</a>
+            <a href="index.html" style="color: white; text-decoration: none; margin-left: 1rem;">Logout</a>
+        </nav>
+    </header>
+    
+    <main style="max-width: 1100px; margin: 2rem auto; display: grid; grid-template-columns: 1fr 300px; gap: 2rem; align-items: start;">
+        
+        <!-- Left Side: Results & Progress -->
+        <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <h2 id="student-welcome">My Dashboard</h2>
+            
+            <div style="margin-top: 1.5rem;">
+                <h3 style="border-bottom: 2px solid #eee; padding-bottom: 0.5rem; margin-bottom: 1rem;">Your Progress</h3>
+                <p style="margin-bottom: 0.5rem;">Overall Accuracy: <strong id="progress-text">0%</strong></p>
+                <div style="width: 100%; background-color: #ddd; border-radius: 4px; height: 20px; overflow: hidden; margin-bottom: 1.5rem;">
+                    <div id="progress-bar" style="height: 100%; background-color: #28a745; width: 0%; transition: width 0.5s ease-in-out;"></div>
+                </div>
+            </div>
+
+            <div style="margin-top: 2rem; background-color: #e2f0ff; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #0056b3;">
+                <h3 style="margin-top: 0; color: #0056b3;">Smart Recommendations</h3>
+                <p id="rec-message" style="font-weight: bold; font-size: 1.1rem; color: #333;">Analyzing performance...</p>
+                <p style="margin-bottom: 0.5rem; font-weight: bold;">Suggested Actions:</p>
+                <ul id="rec-actions" style="margin-top: 0; padding-left: 1.5rem; color: #555;"></ul>
+                <p style="margin-bottom: 0; margin-top: 1rem; font-size: 0.9rem;"><strong>Level Advisement:</strong> <span id="rec-level"></span></p>
+            </div>
+
+            <h3 style="border-bottom: 2px solid #eee; padding-bottom: 0.5rem; margin-top: 2rem;">Past Test Results</h3>
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; margin-top: 1rem;">
+                    <thead>
+                        <tr style="background-color: #f8f9fa;">
+                            <th style="padding: 0.75rem; border-bottom: 2px solid #ddd; text-align: left;">Date</th>
+                            <th style="padding: 0.75rem; border-bottom: 2px solid #ddd; text-align: left;">Type</th>
+                            <th style="padding: 0.75rem; border-bottom: 2px solid #ddd; text-align: left;">Score</th>
+                            <th style="padding: 0.75rem; border-bottom: 2px solid #ddd; text-align: left;">Feedback</th>
+                        </tr>
+                    </thead>
+                    <tbody id="results-table-body">
+                        <!-- Data injected by student.js -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Right Side: Actions & Level Info -->
+        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            
+            <!-- Current Level Card -->
+            <div style="background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center;">
+                <h3 style="margin-top: 0;">Current Level</h3>
+                <div id="current-level-badge" style="display: inline-block; margin-top: 0.5rem; padding: 0.75rem 1.5rem; background-color: #0056b3; color: white; border-radius: 25px; font-weight: bold; font-size: 1.25rem;">
+                    Loading...
+                </div>
+            </div>
+
+            <!-- Action Buttons Card -->
+            <div style="background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: flex; flex-direction: column; gap: 0.75rem;">
+                <h3 style="margin-top: 0; text-align: center;">Action Center</h3>
+                <button onclick="window.location.href='level-selection.html'" style="width: 100%; background-color: #0056b3; padding: 0.75rem; font-size: 1rem;">Take MCQ Test</button>
+                <button onclick="reviewWeakAreas()" style="width: 100%; background-color: #ffc107; color: black; padding: 0.75rem; font-size: 1rem;">Study Weak Areas</button>
+                <button onclick="window.location.href='chatbot.html'" style="width: 100%; background-color: #6f42c1; padding: 0.75rem; font-size: 1rem;">Talk to AI Tutor</button>
+                <button onclick="window.location.href='speaking-test.html'" style="width: 100%; background-color: #17a2b8; padding: 0.75rem; font-size: 1rem;">Practice Speaking</button>
+                <button onclick="window.location.href='reading-test.html'" style="width: 100%; background-color: #28a745; padding: 0.75rem; font-size: 1rem;">Practice Reading</button>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="js/student.js"></script>
+    <script>
+        function reviewWeakAreas() {
+            // Set flag so theories page automatically knows to filter to weak area
+            localStorage.setItem('focusWeakArea', 'Grammar');
+            window.location.href = 'theories.html';
+        }
+    </script>
+</body>
+</html>

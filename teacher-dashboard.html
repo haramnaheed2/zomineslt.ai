@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZOMIN ESLT - Teacher Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/app.js" defer></script>
+</head>
+<body style="background-color: #f4f4f9;">
+    <header style="background-color: #0056b3; color: white; padding: 1rem; display: flex; justify-content: space-between; align-items: center;">
+        <h1 style="margin: 0;">ZOMIN ESLT</h1>
+        <nav>
+            <a href="teacher-dashboard.html" style="color: white; text-decoration: none; margin-left: 1rem;">Dashboard</a>
+            <a href="index.html" style="color: white; text-decoration: none; margin-left: 1rem;">Logout</a>
+        </nav>
+    </header>
+    <main style="max-width: 1000px; margin: 2rem auto; text-align: left; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+        <h2>Teacher Dashboard: Student Overview</h2>
+        
+        <div style="margin-bottom: 1.5rem; display: flex; gap: 1rem; align-items: center; border-bottom: 2px solid #eee; padding-bottom: 1rem;">
+            <label for="filter-level" style="font-weight: bold;">Filter by Level:</label>
+            <select id="filter-level" onchange="window.filterStudents()" style="padding: 0.5rem; border-radius: 4px; border: 1px solid #ccc;">
+                <option value="All">All Levels</option>
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Advanced">Advanced</option>
+            </select>
+        </div>
+
+        <table style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr style="background-color: #f8f9fa;">
+                    <th style="padding: 0.75rem; border-bottom: 2px solid #ddd; text-align: left;">Student Name</th>
+                    <th style="padding: 0.75rem; border-bottom: 2px solid #ddd; text-align: left;">Level</th>
+                    <th style="padding: 0.75rem; border-bottom: 2px solid #ddd; text-align: left;">Test Score</th>
+                    <th style="padding: 0.75rem; border-bottom: 2px solid #ddd; text-align: left;">Weak Areas</th>
+                    <th style="padding: 0.75rem; border-bottom: 2px solid #ddd; text-align: left;">Latest Recording</th>
+                    <th style="padding: 0.75rem; border-bottom: 2px solid #ddd; text-align: left;">Actions</th>
+                </tr>
+            </thead>
+            <tbody id="student-table-body">
+                <!-- Javascript will inject data rows here -->
+            </tbody>
+        </table>
+    </main>
+
+    <script src="js/teacher.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZOMIN ESLT - Theory Library</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/app.js" defer></script>
+</head>
+<body style="background-color: #f4f4f9;">
+    <header style="background-color: #0056b3; color: white; padding: 1rem; display: flex; justify-content: space-between; align-items: center;">
+        <h1 style="margin: 0;">ZOMIN ESLT</h1>
+        <nav>
+            <a href="student-dashboard.html" style="color: white; text-decoration: none; margin-left: 1rem;">Dashboard</a>
+            <a href="index.html" style="color: white; text-decoration: none; margin-left: 1rem;">Logout</a>
+        </nav>
+    </header>
+    
+    <main style="max-width: 1000px; margin: 2rem auto; display: grid; grid-template-columns: 250px 1fr; gap: 2rem; align-items: start;">
+        
+        <!-- Sidebar Navigation -->
+        <div style="background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <h3 style="margin-top: 0;">Categories</h3>
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem;">
+                <li><button onclick="renderTheories('All')" style="width: 100%; text-align: left; background: none; color: #0056b3; border: 1px solid #ccc;">All Theories</button></li>
+                <li><button onclick="renderTheories('Grammar')" style="width: 100%; text-align: left; background: none; color: #0056b3; border: 1px solid #ccc;">Grammar Rules</button></li>
+                <li><button onclick="renderTheories('Literature')" style="width: 100%; text-align: left; background: none; color: #0056b3; border: 1px solid #ccc;">Literature Notes</button></li>
+                <li><button onclick="renderTheories('Linguistics')" style="width: 100%; text-align: left; background: none; color: #0056b3; border: 1px solid #ccc;">Linguistics Theories</button></li>
+            </ul>
+
+            <div id="weak-area-alert" style="display: none; margin-top: 2rem; padding: 1rem; background-color: #ffeeba; border: 1px solid #ffeeba; color: #856404; border-radius: 4px;">
+                <strong>Recommended:</strong> Based on your recent test, review your weak areas.
+            </div>
+        </div>
+
+        <!-- Theory Content Feed -->
+        <div>
+            <h2>Study Materials</h2>
+            <div id="theories-container">
+                <!-- Javascript will inject theories here -->
+            </div>
+        </div>
+
+    </main>
+
+    <script src="js/theories.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            renderTheories("All");
+
+            // Look for a weakArea tag passed in localstorage to display alert
+            const weakArea = localStorage.getItem('focusWeakArea');
+            if(weakArea) {
+                document.getElementById('weak-area-alert').style.display = "block";
+                document.getElementById('weak-area-alert').innerHTML += `<br/><br/>Focus: <b>${weakArea}</b>`;
+                renderTheories(weakArea); // auto filter to their weak area
+                localStorage.removeItem('focusWeakArea'); // consume
+            }
+        });
+    </script>
+</body>
+</html>
